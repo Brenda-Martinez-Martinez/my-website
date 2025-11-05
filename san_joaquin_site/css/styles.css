@@ -1,0 +1,125 @@
+/* Page base: sets the site's default font, resets page spacing,
+   and applies a neutral background color used across the site. */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+/* Header: banner area styling (logo/title container). */
+header {
+    background: #35424a;
+    color: #ffffff;
+    padding: 10px 0;
+    text-align: center;
+}
+
+/* Main page title spacing. */
+h1 {
+    margin: 0;
+}
+
+/* Top-level nav spacing. More specific nav layout rules exist
+   later (e.g. .nav-list) which control the actual nav layout. */
+nav {
+    margin: 20px 0;
+}
+
+/* Legacy/simple nav link styles (used by basic nav implementations). */
+nav a {
+    color: #ffffff;
+    text-decoration: none;
+    padding: 10px 15px;
+}
+
+/* Hover state for legacy nav anchors. The modern nav uses
+   .nav-list a hover rules defined further down. */
+nav a:hover {
+    background: #e8491d;
+}
+
+/* Utility container: centers content and constrains width. */
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+
+/* Footer area styles. */
+footer {
+    background: #35424a;
+    color: #ffffff;
+    text-align: center;
+    padding: 10px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Design tokens: global CSS variables used site-wide.
+   These control max widths, spacing, colors, and subtle shadows. */
+:root{
+    --max-width:1100px;
+    --gap:1.25rem;
+    --accent:#0b63c6;
+    --muted:#666;
+    --bg:#f7f8fb;
+    --card:#ffffff;
+    --radius:8px;
+    --shadow: 0 2px 6px rgba(12,18,30,0.06);
+}
+
+/* Primary navigation (modern):
+    - nav: flex container to center the nav region
+    - .nav-list: list element that holds nav items horizontally
+    - .nav-list a: styles for links inside .nav-list (padding, color, radius)
+    - hover/focus/active rules apply to anchors inside the list */
+nav{ display:flex; justify-content:center }
+.nav-list{ display:flex; gap:1rem; flex-wrap:wrap; list-style:none; padding:0; margin:0 }
+.nav-list a{ display:inline-block; padding:.5rem .75rem; color:var(--accent); text-decoration:none; border-radius:6px; font-weight:600; font-size:1.05rem }
+.nav-list a:hover, .nav-list a:focus{ background:rgba(11,99,198,0.08) }
+.nav-list a[aria-current="page"]{ background:var(--accent); color:#fff; box-shadow:0 2px 6px rgba(11,99,198,0.18); font-weight:700 }
+
+/* Dropdown menu styles:
+     - .dropdown: positioned parent for submenu
+     - .dropbtn: visually unstyled button that triggers the menu
+     - .dropdown-menu: absolutely positioned list shown on hover/focus
+         Nested selectors inside .dropdown-menu:
+             - .dropdown-menu li : list items (unstyled)
+             - .dropdown-menu a  : links inside submenu
+     - .disabled: visual style for non-interactive submenu items */
+.dropdown{ position:relative; display:inline-block }
+.dropbtn{ background:none; border:none; padding:.5rem .75rem; font-weight:600; font-size:1.05rem; color:var(--accent); border-radius:6px; cursor:pointer }
+.dropdown-menu{ display:none; position:absolute; top:100%; left:0; background:var(--card); box-shadow:var(--shadow); border-radius:6px; padding:.25rem 0; min-width:12rem; z-index:60; border:1px solid #eef2f7 }
+.dropdown-menu li{ list-style:none }
+.dropdown-menu a{ display:block; padding:.45rem 1rem; color:#111; text-decoration:none }
+.dropdown:hover .dropdown-menu, .dropdown:focus-within .dropdown-menu{ display:block }
+.dropbtn:hover + .dropdown-menu, .dropbtn:focus + .dropdown-menu{ display:block }
+.disabled{ color:var(--muted); padding:.45rem 1rem; display:block }
+
+/* Mobile responsive rules (max-width:520px):
+   - The submenu becomes part of the document flow (position:static)
+   - The nav uses a hidden checkbox (#nav-toggle) plus a visible label
+     (.nav-toggle) to provide a CSS-only hamburger toggle. Nested
+     mobile adjustments affect .dropdown-menu a, .nav-list li, and
+     .nav-list a to make touch targets full-width. */
+@media (max-width:520px){
+    .dropdown-menu{ position:static; box-shadow:none; padding:0 }
+    .dropdown-menu a{ padding:.6rem 1rem }
+
+     /* hamburger / x toggle visuals
+         - keep the checkbox present in the DOM for accessibility but hide it off-screen
+         - the visible label (.nav-toggle) shows a hamburger (☰) when closed and an X (✕) when open
+         - use the adjacent-sibling selector so the label updates when the checkbox is checked */
+     #nav-toggle{ position:absolute; left:-9999px; }
+     .nav-toggle{ display:inline-block; cursor:pointer; margin:.25rem 0; user-select:none }
+     .nav-toggle::before{ content:"\2630"; font-size:1.25rem; color:var(--accent); padding:.35rem .5rem; border-radius:6px; display:inline-block }
+     #nav-toggle:checked + .nav-toggle::before{ content:"\2715" }
+
+    /* collapse/expand nav on mobile */
+    .nav-list{ max-height:0; overflow:hidden; transition:max-height .28s ease; flex-direction:column; width:100% }
+    #nav-toggle:checked ~ nav .nav-list{ max-height:600px; padding:.5rem 0; background:var(--card); margin-top:.5rem; border-radius:6px; box-shadow:var(--shadow) }
+    .nav-list li{ width:100% }
+    .nav-list a{ display:block; padding:.6rem 1rem }
+}

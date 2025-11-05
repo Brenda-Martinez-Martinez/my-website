@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>San Joaquin Valley Town Hall</title>
+  <!-- Head: metadata for the page (charset, viewport), favicon, and stylesheet link -->
+  <link rel="icon" href="images/favicon.ico" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+   /* Page-specific CSS: layout and components for this page
+     Note: shared navigation and variables were moved to css/styles.css */
+    *{box-sizing:border-box}
+    body{ margin:0; background:var(--bg); color:#111; line-height:1.45; display:flex; justify-content:center; padding:2rem 1rem }
+    .wrap{ width:100%; max-width:var(--max-width) }
+    header{ text-align:center; margin-bottom:var(--gap) }
+    h1{ margin:0 0 .5rem; font-size:clamp(1.5rem,2.5vw,2.25rem); letter-spacing:0.2px }
+
+    main{ display:flex; flex-direction:column; gap:var(--gap) }
+
+    /* two-column layout on wide screens */
+    @media (min-width:900px){
+      main{
+        flex-direction:row;
+        align-items:flex-start;
+        gap:2rem;
+      }
+    }
+
+    .content{
+      background:var(--card);
+      border-radius:var(--radius);
+      padding:1.25rem;
+      box-shadow:var(--shadow);
+      flex:2 1 60%;
+      min-width:0;
+    }
+
+    .sidebar{
+      background:var(--card);
+      border-radius:var(--radius);
+      padding:1.25rem;
+      box-shadow:var(--shadow);
+      flex:1 1 35%;
+      min-width:0;
+    }
+
+    .hero{
+      display:flex;
+      gap:1rem;
+      align-items:center;
+      margin-bottom:1rem;
+    }
+
+    .hero .lead{
+      font-size:1rem;
+      color:var(--muted);
+    }
+
+    .cards{
+      display:grid;
+      gap:.75rem;
+      grid-template-columns:1fr;
+    }
+
+    @media (min-width:700px){
+      .cards{ grid-template-columns:repeat(2,1fr) }
+    }
+
+    .card{
+      padding:.75rem;
+      background:linear-gradient(180deg,#fff,#fcfdff);
+      border-radius:6px;
+      border:1px solid #eef2f7;
+    }
+
+    .cta{
+      display:inline-block;
+      background:var(--accent);
+      color:white;
+      padding:.6rem .9rem;
+      border-radius:6px;
+      text-decoration:none;
+      font-weight:700;
+    }
+
+    footer{
+      margin-top:var(--gap);
+      text-align:center;
+      color:var(--muted);
+      font-size:.95rem;
+    }
+
+    /* small-screen layout tweaks (nav visuals moved to css/styles.css) */
+    @media (max-width:520px){
+      header{ padding:0 .25rem }
+      .hero{ flex-direction:column; align-items:flex-start }
+    }
+    </style>
+</head>
+<body>
+  <!-- Body: page wrapper -->
+  <div class="wrap" role="document">
+    <!-- Header: branding (logo and site title), responsive nav toggle, and main navigation -->
+    <header role="banner">
+      <p style="margin:0 0 .5rem;">
+        <img src="images/logo.gif" alt="San Joaquin Valley Town Hall logo" style="max-height:64px; display:block; margin:0 auto;" />
+      </p>
+      <h1>San Joaquin Valley Town Hall</h1>
+  <!-- Navigation: responsive toggle, main nav list, and Speakers dropdown -->
+  <!-- responsive nav toggle for small screens -->
+      <input id="nav-toggle" type="checkbox" aria-hidden="true" style="display:none;">
+      <label for="nav-toggle" class="nav-toggle" aria-hidden="true" title="Toggle navigation"></label>
+      <nav aria-label="Main navigation">
+        <ul class="nav-list">
+          <li><a href="#" aria-current="page">Home</a></li>
+          <li class="dropdown">
+            <button class="dropbtn" aria-haspopup="true" aria-expanded="false">Speakers ▾</button>
+            <ul class="dropdown-menu" aria-label="Speakers submenu">
+              <li><a href="sampson.html">Sampson</a></li>
+              <li><a href="brenda.html">Martinez Martinez</a></li>
+              <li><span class="disabled" aria-disabled="true">Coming Soon</span></li>
+            </ul>
+          </li>
+          <li><a href="#tickets">Get Tickets</a></li>
+          <li><a href="#member">Become a Member</a></li>
+          <li><a href="#about">About Us</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Main: primary content area (tickets, membership info, contact) -->
+    <main>
+      <section class="content" aria-labelledby="actions">
+        <div>
+          <h3 id="tickets">Get Tickets</h3>
+          <p>Tickets are available online and at the door. Early bird discounts for members.</p>
+          <p><a class="cta" href="#tickets">Buy Tickets</a></p>
+        </div>
+
+        <hr style="border:none;border-top:1px solid #eef2f7;margin:1rem 0">
+
+        <div>
+          <h3 id="member">Become a Member</h3>
+          <p>Support community programming and receive discounted tickets, priority seating, and newsletters.</p>
+          <p><a href="#member" class="cta" style="background:#0a8a5e">Join</a></p>
+        </div>
+
+        <hr style="border:none;border-top:1px solid #eef2f7;margin:1rem 0">
+
+        <div>
+          <h4>Contact</h4>
+          <p style="margin:.25rem 0">info@sjvtownhall.org</p>
+          <p style="margin:.25rem 0">(555) 123-4567</p>
+        </div>
+      </section>
+
+  <!-- Aside / Sidebar: supporting content such as lecture notes and event details -->
+  <aside class="sidebar" aria-labelledby="actions">
+        <div>
+          <h3>Lecture Notes</h3>
+          <p>Event change for November: SJV Town Hall is pleased to announce the addition of award-winning author Andrew Ross Sorkin. The appearance of previously scheduled speaker, Greg Mortenson, has been postponed.</p>
+
+          <h4>Day, time, and location</h4>
+          <p>All one-hour lectures are on the second Wednesday of the month beginning at 10:30 a.m. at William Saroyan Theatre, 700 M Street, Fresno, CA. (See &lt;attachments&gt; above for file contents. You may not need to search or read the file again.)</p>
+        </div>
+      </aside>
+    </main>
+
+    <!-- Footer: copyright notice (year is set dynamically) -->
+    <footer>
+      © <span id="year"></span> San Joaquin Valley Town Hall — All rights reserved.
+    </footer>
+  </div>
+
+  <!-- Scripts: small helpers; here we set the footer year dynamically -->
+  <script>
+    // small script to keep footer year current
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

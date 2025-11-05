@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Brenda Martinez Martinez — San Joaquin Valley Town Hall</title>
+  <!-- Head: metadata, favicon and stylesheet link; page-specific tiny tweaks below -->
+  <link rel="icon" href="images/favicon.ico" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    /* Page-specific tweaks for Brenda's speaker page */
+    h1{ margin:0 0 .5rem; }
+  .speaker-photo{ max-width:100%; height:360px; width:auto; border-radius:6px; display:block; margin:0 auto; }
+  </style>
+</head>
+<body>
+  <!-- Body wrapper -->
+  <div class="wrap" role="document">
+    <!-- Header: logo, site title and main navigation (Speakers dropdown included) -->
+    <header role="banner">
+      <p style="margin:0 0 .5rem;">
+        <img src="images/logo.gif" alt="San Joaquin Valley Town Hall logo" style="max-height:64px; display:block; margin:0 auto;" />
+      </p>
+      <h1>San Joaquin Valley Town Hall</h1>
+
+  <!-- Navigation: responsive toggle and main nav list (Speakers dropdown) -->
+  <!-- responsive nav toggle kept for consistency with other pages -->
+      <input id="nav-toggle" type="checkbox" aria-hidden="true" style="display:none;">
+      <label for="nav-toggle" class="nav-toggle" aria-hidden="true" title="Toggle navigation"></label>
+      <nav aria-label="Main navigation">
+        <ul class="nav-list">
+          <li><a href="index.html">Home</a></li>
+          <li class="dropdown">
+            <button class="dropbtn" aria-haspopup="true" aria-expanded="false">Speakers ▾</button>
+            <ul class="dropdown-menu" aria-label="Speakers submenu">
+              <li><a href="sampson.html">Sampson</a></li>
+              <li><a href="brenda.html" aria-current="page">Martinez Martinez</a></li>
+              <li><span class="disabled" aria-disabled="true">Coming Soon</span></li>
+            </ul>
+          </li>
+          <li><a href="#tickets">Get Tickets</a></li>
+          <li><a href="#member">Become a Member</a></li>
+          <li><a href="#about">About Us</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Main: speaker detail section (photo, topic, description, takeaways) -->
+    <main>
+      <section class="content" aria-labelledby="speaker-title">
+        <h2 id="speaker-title">Brenda Martinez Martinez</h2>
+
+        <p style="text-align:center;margin:.5rem 0 1rem 0;">
+          <img src="images/20240924_192618.jpg" alt="Brenda Martinez Martinez" class="speaker-photo" />
+        </p>
+
+  <h3>Topic: Predictive Data Analytics — Using Data to Anticipate Community Outcomes</h3>
+
+  <p>Brenda Martinez Martinez is a data scientist and community researcher who specializes in applying predictive analytics to social and environmental challenges. In this talk Brenda will demonstrate how data-driven models can forecast a range of situations — from resource needs and service demand to early warning signals for emergencies — and how communities can use those forecasts to plan, respond, and allocate resources more effectively.</p>
+
+  <p>The presentation mixes accessible case studies with practical methodology: selecting and preparing local datasets, choosing appropriate modeling approaches, evaluating model performance, and communicating uncertainty to stakeholders. Brenda will emphasize ethical considerations, transparency, and ways to turn model outputs into clear, actionable decisions for community leaders and program managers.</p>
+        <h4>Takeaways</h4>
+        <ul>
+          <li>Fundamentals of predictive modeling and when to use them.</li>
+          <li>How to identify, collect, and prepare community data for analysis.</li>
+          <li>Translating model outputs into actionable plans while communicating uncertainty and ethical constraints.</li>
+        </ul>
+      </section>
+
+  <!-- Aside: supporting info (lecture notes, location and time) -->
+  <aside class="sidebar">
+        <div class="card">
+          <h3>Lecture Notes</h3>
+          <p>Brenda's talk will be followed by a short Q&amp;A and a resource handout listing local organizations and seed/grant opportunities for community groups.</p>
+        </div>
+
+        <div class="card">
+          <h3>Day, time, and location</h3>
+          <p>One-hour lecture on the second Wednesday of the month at 10:30 a.m. — William Saroyan Theatre, 700 M Street, Fresno, CA.</p>
+        </div>
+      </aside>
+    </main>
+
+    <!-- Footer: copyright and small utility script sets the year -->
+    <footer>
+      © <span id="year"></span> San Joaquin Valley Town Hall — All rights reserved.
+    </footer>
+  </div>
+
+  <!-- Scripts: helper script(s) (dynamic footer year) -->
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
